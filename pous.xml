@@ -1,0 +1,5167 @@
+<?xml version="1.0"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.plcopen.org/xml/tc6.xsd" xsi:schemaLocation="http://www.plcopen.org/xml/tc6.xsd">
+  <fileHeader companyName="Higen" creationDateTime="2011-12-10T00:00:00" productVersion="0.0" productName="Motion Controller"/>
+  <contentHeader name="PLCopen TC2 library" modificationDateTime="2011-12-10T00:00:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling y="0" x="0"/>
+      </fbd>
+      <ld>
+        <scaling y="0" x="0"/>
+      </ld>
+      <sfc>
+        <scaling y="0" x="0"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes>
+      <dataType name="AXIS_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_BUFFER_MODE">
+        <baseType>
+          <enum>
+            <values>
+              <value name="mcAborting"/>
+              <value name="mcBuffered"/>
+              <value name="mcBlendingLow"/>
+              <value name="mcBlendingPrevious"/>
+              <value name="mcBlendingNext"/>
+              <value name="mcBlendingHigh"/>
+            </values>
+          </enum>
+        </baseType>
+        <initialValue>
+          <simpleValue value="mcAborting"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_HOMING_PROCEDURES">
+        <baseType>
+          <enum>
+            <values>
+              <value name="mcHomeDirect"/>
+              <value name="mcHomeLimitSwitchPositive"/>
+              <value name="mcHomeLimitSwitchNegative"/>
+              <value name="mcHomeAbsoluteSwitchPositive"/>
+              <value name="mcHomeAbsoluteSwitchNegative"/>
+              <value name="mcHomeReferencePulsePositive"/>
+              <value name="mcHomeReferencePulseNegative"/>
+              <value name="mcHomeAbsolute"/>              
+            </values>
+          </enum>
+        </baseType>
+        <initialValue>
+          <simpleValue value="mcHomeDirect"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_DIRECTION">
+        <baseType>
+          <enum>
+            <values>
+              <value name="mcAbsolutePosition"/>
+              <value name="mcPositiveDirection"/>
+              <value name="mcShortestWay"/>
+              <value name="mcNegativeDirection"/>
+              <value name="mcCurrentDirection"/>
+            </values>
+          </enum>
+        </baseType>
+        <initialValue>
+          <simpleValue value="mcAbsolutePosition"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_TP_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_TV_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_TA_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_EXECUTION_MODE">
+        <baseType>
+          <enum>
+            <values>
+              <value name="mcImmediately"/>
+              <value name="mcQueued"/>
+            </values>
+          </enum>
+        </baseType>
+        <initialValue>
+          <simpleValue value="mcImmediately"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_SOURCE">
+        <baseType>
+          <enum>
+            <values>
+              <value name="mcActualValue"/>
+              <value name="mcSetValue"/>
+            </values>
+          </enum>
+        </baseType>
+        <initialValue>
+          <simpleValue value="mcActualValue"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_CAMSWITCH_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_OUTPUT_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_TRACK_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_TRIGGER_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_CAM_REF">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_CAM_ID">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_START_MODE">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_SYNC_MODE">
+        <baseType>
+          <INT/>
+        </baseType>
+        <initialValue>
+          <simpleValue value="-1"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_COMBINE_MODE">
+        <baseType>
+          <enum>
+            <values>
+              <value name="mcAddAxes"/>
+              <value name="mcSubAxes"/>
+            </values>
+          </enum>
+        </baseType>
+        <initialValue>
+          <simpleValue value="mcAddAxes"/>
+        </initialValue>
+      </dataType>
+      <dataType name="MC_REAL_ARRAY">
+        <baseType>
+          <array>
+            <dimension upper="6" lower="1"/>
+            <baseType>
+              <LREAL/>
+            </baseType>
+          </array>
+        </baseType>
+      </dataType>
+      <dataType name="MC_INT_ARRAY">
+        <baseType>
+          <array>
+            <dimension upper="6" lower="1"/>
+            <baseType>
+              <INT/>
+            </baseType>
+          </array>
+        </baseType>
+      </dataType>
+    </dataTypes>
+    <pous>
+      <pou name="MC_GetTorqueLimit" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <outputVars>
+            <variable name="TorqueLimitPos">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="TorqueLimitNeg">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_GetTorqueLimit(MC_GETTORQUELIMIT*);
+    __mcl_cmd_MC_GetTorqueLimit(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This fonction blocks returns the axis torque limits]]></documentation>
+      </pou>
+      <pou name="MC_SetTorqueLimit" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <inputVars>
+            <variable name="TorqueLimitPos">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="TorqueLimitNeg">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+          </inputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_SetTorqueLimit(MC_SETTORQUELIMIT*);
+    __mcl_cmd_MC_SetTorqueLimit(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This fonction blocks defines the axis torque limits]]></documentation>
+      </pou>
+      <pou name="MC_Power" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="EnablePositive">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="EnableNegative">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Status">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars/>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_Power(MC_POWER*);
+    __mcl_cmd_MC_Power(data__);
+    }}
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block controls the power stage (On or Off). ]]></documentation>
+      </pou>
+      <pou name="MC_Home" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Position">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="HomingMode">
+              <type>
+                <derived name="MC_HOMING_PROCEDURES"/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_Home(MC_HOME*);
+    __mcl_cmd_MC_Home(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands the axis to perform the «search home» sequence. The details of this sequence are manufacturer dependent and can be set by the axis’ parameters. The ‘Position’ input is used to set the absolute position when reference signal is detected. This Function Block completes at ‘Standstill’ if it was started in ‘Standstill’. ]]></documentation>
+      </pou>
+      <pou name="MC_Stop" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_Stop(MC_STOP*);
+    __mcl_cmd_MC_Stop(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a controlled motion stop and transfers the axis to the state ‘Stopping’. It aborts any ongoing Function Block execution. While the axis is in state ‘Stopping’, no other FB can perform any motion on the same axis. After the axis has reached ‘Velocity’ zero, the ‘Done’ output is set to TRUE immediately. The axis remains in the state ‘Stopping’ as long as ‘Execute’ is still TRUE or ‘Velocity’ zero is not yet reached. As soon as ‘Done’ is SET and ‘Execute’ is FALSE the axis goes to state ‘Standstill’. ]]></documentation>
+      </pou>
+      <pou name="MC_Halt" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_Halt(MC_HALT*);
+    __mcl_cmd_MC_Halt(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a controlled motion stop. The axis is moved to the state ‘DiscreteMotion’, until the velocity is zero. With the ‘Done’ output set, the state is transferred to ‘Standstill’. ]]></documentation>
+      </pou>
+      <pou name="MC_MoveAbsolute" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Position">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Direction">
+              <type>
+                <derived name="MC_DIRECTION"/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_MoveAbsolute(MC_MOVEABSOLUTE*);
+    __mcl_cmd_MC_MoveAbsolute(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a controlled motion to a specified absolute position. ]]></documentation>
+      </pou>
+      <pou name="MC_MoveRelative" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Distance">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_MoveRelative(MC_MOVERELATIVE*);
+    __mcl_cmd_MC_MoveRelative(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a controlled motion of a specified distance relative to the set position at the time of the execution. ]]></documentation>
+      </pou>
+      <pou name="MC_MoveAdditive" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Distance">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_MoveAdditive(MC_MOVEADDITIVE*);
+    __mcl_cmd_MC_MoveAdditive(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a controlled motion of a specified relative distance additional to the most recent commanded position in the axis state ‘DiscreteMotion’. The most recent commanded position may be the result of a previous MC_MoveAdditive motion which was aborted. If the FB is activated in the axis state ‘ContinuousMotion’, the specified relative distance is added to the set position at the time of the execution. ]]></documentation>
+      </pou>
+      <pou name="MC_MoveSuperimposed" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Distance">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="VelocityDiff">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="CoveredDistance">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_MoveSuperimposed(MC_MOVESUPERIMPOSED*);
+    __mcl_cmd_MC_MoveSuperimposed(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a controlled motion of a specified relative distance additional to an existing motion. The existing Motion is not interrupted, but is superimposed by the additional motion. ]]></documentation>
+      </pou>
+      <pou name="MC_HaltSuperimposed" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_HaltSuperimposed(MC_HALTSUPERIMPOSED*);
+    __mcl_cmd_MC_HaltSuperimposed(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a halt to all superimposed motions of the axis. The underlying motion is not interrupted. ]]></documentation>
+      </pou>
+      <pou name="MC_MoveVelocity" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Direction">
+              <type>
+                <derived name="MC_DIRECTION"/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="InVelocity">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InVelocity0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_MoveVelocity(MC_MOVEVELOCITY*);
+    __mcl_cmd_MC_MoveVelocity(data__);
+    }}
+    Execute0 := Execute;
+    InVelocity0 := InVelocity;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a never ending controlled motion at a specified velocity. ]]></documentation>
+      </pou>
+      <pou name="MC_MoveContinuousAbsolute" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Position">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="EndVelocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Direction">
+              <type>
+                <derived name="MC_DIRECTION"/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="InEndVelocity">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InEndVelocity0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_MoveContinuousAbsolute(MC_MOVECONTINUOUSABSOLUTE*);
+    __mcl_cmd_MC_MoveContinuousAbsolute(data__);
+    }}
+    Execute0 := Execute;
+    InEndVelocity0 := InEndVelocity;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a controlled motion to a specified absolute position ending with the specified velocity. ]]></documentation>
+      </pou>
+      <pou name="MC_MoveContinuousRelative" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Distance">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="EndVelocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="InEndVelocity">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InEndVelocity0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_MoveContinuousRelative(MC_MOVECONTINUOUSRELATIVE*);
+    __mcl_cmd_MC_MoveContinuousRelative(data__);
+    }}
+    Execute0 := Execute;
+    InEndVelocity0 := InEndVelocity;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a controlled motion of a specified relative distance ending with the specified velocity. ]]></documentation>
+      </pou>
+      <pou name="MC_TorqueControl" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Torque">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="TorqueRamp">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Direction">
+              <type>
+                <derived name="MC_DIRECTION"/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="InTorque">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InTorque0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_TorqueControl(MC_TORQUECONTROL*);
+    __mcl_cmd_MC_TorqueControl(data__);
+    }}
+    Execute0 := Execute;
+    InTorque0 := InTorque;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block continuously exerts a torque or force of the specified magnitude. This magnitude is approached using a defined ramp (‘TorqueRamp’), and the Function Block sets the ‘InTorque’ output if the commanded torque level is reached. This function block is applicable for force and torque. When there is no external load, force is applicable. Positive torque is in the positive direction of velocity. ]]></documentation>
+      </pou>
+      <pou name="MC_PositionProfile" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="TimePosition">
+              <type>
+                <derived name="MC_TP_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TimeScale">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="PositionScale">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="Offset">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_PositionProfile(MC_POSITIONPROFILE*);
+    __mcl_cmd_MC_PositionProfile(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a time-position locked motion profile ]]></documentation>
+      </pou>
+      <pou name="MC_VelocityProfile" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="TimeVelocity">
+              <type>
+                <derived name="MC_TV_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TimeScale">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="VelocityScale">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="Offset">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="ProfileCompleted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ProfileCompleted0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_VelocityProfile(MC_VELOCITYPROFILE*);
+    __mcl_cmd_MC_VelocityProfile(data__);
+    }}
+    Execute0 := Execute;
+    ProfileCompleted0 := ProfileCompleted;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a time-velocity locked motion profile. The velocity in the final element in the profile should be maintained. The state remains ‘ContinuousMotion’. ]]></documentation>
+      </pou>
+      <pou name="MC_AccelerationProfile" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="TimeAcceleration">
+              <type>
+                <derived name="MC_TA_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TimeScale">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="AccelerationScale">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="Offset">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="ProfileCompleted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ProfileCompleted0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_AccelerationProfile(MC_ACCELERATIONPROFILE*);
+    __mcl_cmd_MC_AccelerationProfile(data__);
+    }}
+    Execute0 := Execute;
+    ProfileCompleted0 := ProfileCompleted;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a time-acceleration locked motion profile. After finalizing the acceleration profile, the acceleration goes to 0 (and typically the final velocity is maintained). It stays in the state ‘ContinuousMotion’. ]]></documentation>
+      </pou>
+      <pou name="MC_SetPosition" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Position">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Relative">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ExecutionMode">
+              <type>
+                <derived name="MC_EXECUTION_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_SetPosition(MC_SETPOSITION*);
+    __mcl_cmd_MC_SetPosition(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block shifts the coordinate system of an axis by manipulating both the set-point position as well as the actual position of an axis with the same value without any movement caused. (Re-calibration with same following error). This can be used for instance for a reference situation. This Function Block can also be used during motion without changing the commanded position, which is now positioned in the shifted coordinate system. ]]></documentation>
+      </pou>
+      <pou name="MC_SetOverride" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="VelFactor">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="AccFactor">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="JerkFactor">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Enabled">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_SetOverride(MC_SETOVERRIDE*);
+    __mcl_cmd_MC_SetOverride(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block sets the values of override for the whole axis, and all functions that are working on that axis. The override parameters contribute as a factor to the calculation of the commanded velocity, acceleration and jerk of the motion. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadParameter" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ParameterNumber">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="Value">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadParameter(MC_READPARAMETER*);
+    __mcl_cmd_MC_ReadParameter(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block returns the value of a vendor specific parameter. The returned Value has to be converted to Real if necessary. If not possible, the vendor has to supply a vendor specific FB to read the parameter. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadBoolParameter" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ParameterNumber">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="Value">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadBoolParameter(MC_READBOOLPARAMETER*);
+    __mcl_cmd_MC_ReadBoolParameter(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block returns the value of a vendor specific parameter with datatype BOOL. ]]></documentation>
+      </pou>
+      <pou name="MC_WriteParameter" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ParameterNumber">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="Value">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="ExecutionMode">
+              <type>
+                <derived name="MC_EXECUTION_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_WriteParameter(MC_WRITEPARAMETER*);
+    __mcl_cmd_MC_WriteParameter(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block modifies the value of a vendor specific parameter. ]]></documentation>
+      </pou>
+      <pou name="MC_WriteBoolParameter" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ParameterNumber">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="Value">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ExecutionMode">
+              <type>
+                <derived name="MC_EXECUTION_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_WriteBoolParameter(MC_WRITEBOOLPARAMETER*);
+    __mcl_cmd_MC_WriteBoolParameter(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block modifies the value of a vendor specific parameter of type BOOL. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadDigitalInput" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Input">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InputNumber">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="Value">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadDigitalInput(MC_READDIGITALINPUT*);
+    __mcl_cmd_MC_ReadDigitalInput(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block gives access to the value of the input, referenced by the datatype AXIS_REF. It provides the value of the referenced input (BOOL) ]]></documentation>
+      </pou>
+      <pou name="MC_ReadDigitalOutput" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Output">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="OutputNumber">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="Value">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadDigitalOutput(MC_READDIGITALOUTPUT*);
+    __mcl_cmd_MC_ReadDigitalOutput(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block provides access to the value of a digital output, referenced by the datatype AXIS_REF. It provides the value of the referenced output (BOOL). ]]></documentation>
+      </pou>
+      <pou name="MC_WriteDigitalOutput" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Output">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="OutputNumber">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="Value">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ExecutionMode">
+              <type>
+                <derived name="MC_EXECUTION_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_WriteDigitalOutput(MC_WRITEDIGITALOUTPUT*);
+    __mcl_cmd_MC_WriteDigitalOutput(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block writes a value to the output referenced by the argument ‘Output’ once (with rising edge of Execute). ]]></documentation>
+      </pou>
+      <pou name="MC_ReadActualPosition" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="Position">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadActualPosition(MC_READACTUALPOSITION*);
+    __mcl_cmd_MC_ReadActualPosition(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block returns the actual position. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadActualVelocity" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadActualVelocity(MC_READACTUALVELOCITY*);
+    __mcl_cmd_MC_ReadActualVelocity(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block returns the value of the actual velocity as long as ‘Enable’ is set. ‘Valid’ is true when the dataoutput ‘Velocity’ is valid. If ‘Enable’ is Reset, the data loses its validity, and all outputs are reset, no matter if new data is available. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadActualTorque" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="Torque">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadActualTorque(MC_READACTUALTORQUE*);
+    __mcl_cmd_MC_ReadActualTorque(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block returns the value of the actual torque or force as long as ‘Enable’ is set. ‘Valid’ is true when the data-output ‘Torque’ is valid. If ‘Enable’ is Reset, the data loses its validity, and ‘Valid’ is also reset, no matter if new data is available. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadStatus" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="ErrorStop">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Disabled">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Stopping">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Homing">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Standstill">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="DiscreteMotion">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousMotion">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SynchronizedMotion">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadStatus(MC_READSTATUS*);
+    __mcl_cmd_MC_ReadStatus(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block returns in detail the status of the state diagram of the selected axis. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadMotionState" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Source">
+              <type>
+                <derived name="MC_SOURCE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="ConstantVelocity">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Accelerating">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Decelerating">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="DirectionPositive">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="DirectionNegative">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadMotionState(MC_READMOTIONSTATE*);
+    __mcl_cmd_MC_ReadMotionState(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block returns in detail the status of the axis with respect to the motion currently in progress. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadAxisInfo" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="HomeAbsSwitch">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LimitSwitchPos">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LimitSwitchNeg">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Simulation">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommunicationReady">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ReadyForPowerOn">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="PowerOn">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="IsHomed">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="AxisWarning">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadAxisInfo(MC_READAXISINFO*);
+    __mcl_cmd_MC_ReadAxisInfo(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block reads information concerning an axis, like modes, inputs directly related to the axis, and certain status information. ]]></documentation>
+      </pou>
+      <pou name="MC_ReadAxisError" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="AxisErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_ReadAxisError(MC_READAXISERROR*);
+    __mcl_cmd_MC_ReadAxisError(data__);
+    }}
+    Enable0 := Enable;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block presents general axis errors not relating to the Function Blocks. (for instance axis errors, drive errors, communication errors) ]]></documentation>
+      </pou>
+      <pou name="MC_Reset" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_Reset(MC_RESET*);
+    __mcl_cmd_MC_Reset(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block makes the transition from the state ‘ErrorStop’ to ‘Standstill’ or ‘Disabled’ by resetting all internal axis-related errors – it does not affect the output of the FB instances. ]]></documentation>
+      </pou>
+      <pou name="MC_DigitalCamSwitch" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Switches">
+              <type>
+                <derived name="MC_CAMSWITCH_REF"/>
+              </type>
+            </variable>
+            <variable name="Outputs">
+              <type>
+                <derived name="MC_OUTPUT_REF"/>
+              </type>
+            </variable>
+            <variable name="TrackOptions">
+              <type>
+                <derived name="MC_TRACK_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="EnableMask">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="ValueSource">
+              <type>
+                <derived name="MC_SOURCE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="InOperation">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Enable0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InOperation0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_DigitalCamSwitch(MC_DIGITALCAMSWITCH*);
+    __mcl_cmd_MC_DigitalCamSwitch(data__);
+    }}
+    Enable0 := Enable;
+    InOperation0 := InOperation;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block is the analogy to switches on a motor shaft: it commands a group of discrete output bits to switch in analogy to a set of mechanical cam controlled switches connected to an axis. Forward and backward movements are allowed. ]]></documentation>
+      </pou>
+      <pou name="MC_TouchProbe" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="TriggerInput">
+              <type>
+                <derived name="MC_TRIGGER_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="WindowOnly">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="FirstPosition">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="LastPosition">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="RecordedPosition">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_TouchProbe(MC_TOUCHPROBE*);
+    __mcl_cmd_MC_TouchProbe(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block is used to record an axis position at a trigger event ]]></documentation>
+      </pou>
+      <pou name="MC_AbortTrigger" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="TriggerInput">
+              <type>
+                <derived name="MC_TRIGGER_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_AbortTrigger(MC_ABORTTRIGGER*);
+    __mcl_cmd_MC_AbortTrigger(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block is used to abort function blocks which are connected to trigger events (e.g. MC_TouchProbe) ]]></documentation>
+      </pou>
+      <pou name="MC_CamTableSelect" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Master">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="CamTable">
+              <type>
+                <derived name="MC_CAM_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Periodic">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MasterAbsolute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SlaveAbsolute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ExecutionMode">
+              <type>
+                <derived name="MC_EXECUTION_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="CamTableID">
+              <type>
+                <derived name="MC_CAM_ID"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="RefInit">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CamTableIDRef">
+              <type>
+                <derived name="MC_CAM_ID"/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    IF NOT(RefInit) THEN
+      {{
+          extern int __MK_Alloc_MC_CAM_ID();
+          int res=__MK_Alloc_MC_CAM_ID();
+          SetFbVar(CAMTABLEID,res);
+          SetFbVar(CAMTABLEIDREF,res);
+      }}
+      RefInit := TRUE;
+    END_IF;
+    {{
+    extern void __mcl_cmd_MC_CamTableSelect(MC_CAMTABLESELECT*);
+    __mcl_cmd_MC_CamTableSelect(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block selects the CAM tables by setting the connections to the relevant tables ]]></documentation>
+      </pou>
+      <pou name="MC_CamIn" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Master">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MasterOffset">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="SlaveOffset">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="MasterScaling">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="SlaveScaling">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="MasterStartDistance">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="MasterSyncPosition">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="StartMode">
+              <type>
+                <derived name="MC_START_MODE"/>
+              </type>
+            </variable>
+            <variable name="MasterValueSource">
+              <type>
+                <derived name="MC_SOURCE"/>
+              </type>
+            </variable>
+            <variable name="CamTableID">
+              <type>
+                <derived name="MC_CAM_ID"/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="InSync">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="EndOfProfile">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InSync0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_CamIn(MC_CAMIN*);
+    __mcl_cmd_MC_CamIn(data__);
+    }}
+    Execute0 := Execute;
+    InSync0 := InSync;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block engages the CAM ]]></documentation>
+      </pou>
+      <pou name="MC_CamOut" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_CamOut(MC_CAMOUT*);
+    __mcl_cmd_MC_CamOut(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block disengages the Slave axis from the Master axis immediately ]]></documentation>
+      </pou>
+      <pou name="MC_GearIn" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Master">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="RatioNumerator">
+              <type>
+                <INT/>
+              </type>
+              <initialValue>
+                <simpleValue value="1"/>
+              </initialValue>
+            </variable>
+            <variable name="RatioDenominator">
+              <type>
+                <UINT/>
+              </type>
+              <initialValue>
+                <simpleValue value="1"/>
+              </initialValue>
+            </variable>
+            <variable name="MasterValueSource">
+              <type>
+                <derived name="MC_SOURCE"/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="InGear">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InGear0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_GearIn(MC_GEARIN*);
+    __mcl_cmd_MC_GearIn(data__);
+    }}
+    Execute0 := Execute;
+    InGear0 := InGear;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a ratio between the VELOCITY of the slave and master axis. ]]></documentation>
+      </pou>
+      <pou name="MC_GearOut" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_GearOut(MC_GEAROUT*);
+    __mcl_cmd_MC_GearOut(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block disengages the Slave axis from the Master axis ]]></documentation>
+      </pou>
+      <pou name="MC_GearInPos" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Master">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="RatioNumerator">
+              <type>
+                <INT/>
+              </type>
+              <initialValue>
+                <simpleValue value="1"/>
+              </initialValue>
+            </variable>
+            <variable name="RatioDenominator">
+              <type>
+                <UINT/>
+              </type>
+              <initialValue>
+                <simpleValue value="1"/>
+              </initialValue>
+            </variable>
+            <variable name="MasterValueSource">
+              <type>
+                <derived name="MC_SOURCE"/>
+              </type>
+            </variable>
+            <variable name="MasterSyncPosition">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="SlaveSyncPosition">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="SyncMode">
+              <type>
+                <derived name="MC_SYNC_MODE"/>
+              </type>
+            </variable>
+            <variable name="MasterStartDistance">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="StartSync">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InSync">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InSync0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_GearInPos(MC_GEARINPOS*);
+    __mcl_cmd_MC_GearInPos(data__);
+    }}
+    Execute0 := Execute;
+    InSync0 := InSync;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block commands a gear ratio between the position of the slave and master axes from the synchronization point onwards. ]]></documentation>
+      </pou>
+      <pou name="MC_PhasingAbsolute" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Master">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="PhaseShift">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="AbsolutePhaseShift">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_PhasingAbsolute(MC_PHASINGABSOLUTE*);
+    __mcl_cmd_MC_PhasingAbsolute(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block creates an absolute phase shift in the master position of a slave axis. The master position is shifted in relation to the real physical position. This is analogous to opening a coupling on the master shaft for a moment, and is used to delay or advance an axis to its master. The phase shift is seen from the slave. The master does not know that there is a phase shift experienced by the slave (MasterPos as seen from the SlaveAxis = PhysicalMasterPos + PhaseShiftValueSlaveAxis, the phase shift value has the character of a position offset) The phase shift remains until another ‘Phasing’ command changes it again. ]]></documentation>
+      </pou>
+      <pou name="MC_PhasingRelative" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Master">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="PhaseShift">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Velocity">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Acceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Deceleration">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="Jerk">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="CoveredPhaseShift">
+              <type>
+                <LREAL/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Done0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_PhasingRelative(MC_PHASINGRELATIVE*);
+    __mcl_cmd_MC_PhasingRelative(data__);
+    }}
+    Execute0 := Execute;
+    Done0 := Done;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block creates a phase shift in the master position of a slave axis relative to the existing phase shift. The master position is shifted in relation to the real physical position. This is analogous to opening a coupling on the master shaft for a moment, and is used to delay or advance an axis to its master. The phase shift is seen from the slave. The master does not know that there is a phase shift experienced by the slave. (MasterPos as seen from SlaveAxis = PhysicalMasterPos + PhaseShiftValueSlaveAxis, the phase shift value has the character of a position offset) The phase shift remains until another ‘Phasing’ command changes it again. Relative phase shifts are added to each other for the applicable phase shift ]]></documentation>
+      </pou>
+      <pou name="MC_CombineAxes" pouType="functionBlock">
+        <interface>
+          <inOutVars>
+            <variable name="Master1">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Master2">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+            <variable name="Slave">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </inOutVars>
+          <inputVars>
+            <variable name="Execute">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ContinuousUpdate">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CombineMode">
+              <type>
+                <derived name="MC_COMBINE_MODE"/>
+              </type>
+            </variable>
+            <variable name="GearRatioNumeratorM1">
+              <type>
+                <INT/>
+              </type>
+              <initialValue>
+                <simpleValue value="1"/>
+              </initialValue>
+            </variable>
+            <variable name="GearRatioDenominatorM1">
+              <type>
+                <INT/>
+              </type>
+              <initialValue>
+                <simpleValue value="1"/>
+              </initialValue>
+            </variable>
+            <variable name="GearRatioNumeratorM2">
+              <type>
+                <INT/>
+              </type>
+              <initialValue>
+                <simpleValue value="1"/>
+              </initialValue>
+            </variable>
+            <variable name="GearRatioDenominatorM2">
+              <type>
+                <INT/>
+              </type>
+              <initialValue>
+                <simpleValue value="1"/>
+              </initialValue>
+            </variable>
+            <variable name="MasterValueSourceM1">
+              <type>
+                <derived name="MC_SOURCE"/>
+              </type>
+            </variable>
+            <variable name="MasterValueSourceM2">
+              <type>
+                <derived name="MC_SOURCE"/>
+              </type>
+            </variable>
+            <variable name="BufferMode">
+              <type>
+                <derived name="MC_BUFFER_MODE"/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="InSync">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Busy">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CommandAborted">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Error">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ErrorID">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Execute0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="InSync0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Active0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[    {{
+    extern void __mcl_cmd_MC_CombineAxes(MC_COMBINEAXES*);
+    __mcl_cmd_MC_CombineAxes(data__);
+    }}
+    Execute0 := Execute;
+    InSync0 := InSync;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This Function Block combines the motion of 2 axes into a third axis with selectable combination method. Basically it is a calculation of a new position setpoint based on the 2 position setpoints of the input axes. This FB is reflected in the state diagram like a synchronized motion type. As application example one can work with a separate profile synchronized to an object on a moving belt, or a rotating knife with flexible covered distance to be cut. ]]></documentation>
+      </pou>
+      <pou name="MC_Sim" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="MaxVel">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="MaxAcc">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+            <variable name="MaxDec">
+              <type>
+                <LREAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="1.0"/>
+              </initialValue>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Axis">
+              <type>
+                <derived name="AXIS_REF"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="SimParam">
+              <type>
+                <derived name="MC_WriteBoolParameter"/>
+              </type>
+            </variable>
+            <variable name="VelParam">
+              <type>
+                <derived name="MC_WriteParameter"/>
+              </type>
+            </variable>
+            <variable name="AccParam">
+              <type>
+                <derived name="MC_WriteParameter"/>
+              </type>
+            </variable>
+            <variable name="DecParam">
+              <type>
+                <derived name="MC_WriteParameter"/>
+              </type>
+            </variable>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IF NOT Done THEN
+  {{
+    extern int __MK_Alloc_AXIS_REF(); 
+    int res=__MK_Alloc_AXIS_REF();
+    __SET_VAR(data__->,AXIS,res);
+  }}
+  SimParam(Axis := Axis,
+           Execute := BOOL#TRUE,
+           ParameterNumber := 1000, 
+           Value := BOOL#TRUE);
+  VelParam(Axis := Axis,
+           Execute := BOOL#TRUE,
+           ParameterNumber := 9,
+           Value := MaxVel);
+  AccParam(Axis := Axis, 
+           Execute := BOOL#TRUE,
+           ParameterNumber := 13,
+           Value := MaxAcc);
+  DecParam(Axis := Axis,
+           Execute := BOOL#TRUE,
+           ParameterNumber := 15,
+           Value := MaxDec);
+  Done := TRUE;
+END_IF;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This allocates a simulation Axis, for testing. 
+One axis per instanciated FB.
+]]></documentation>
+      </pou>
+      <pou name="MC_CreateTrigger" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="PositiveEdge">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE"/>
+              </initialValue>
+            </variable>
+            <variable name="NegativeEdge">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE"/>
+              </initialValue>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="TriggerInput">
+              <type>
+                <derived name="MC_TRIGGER_REF"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IF NOT Done THEN
+  {{
+  extern int __MK_Alloc_MC_TRIGGER_REF();
+  extern char* __MK_GetPublic_MC_TRIGGER_REF(int);
+  int res=__MK_Alloc_MC_TRIGGER_REF(); 
+  if(res>=0) 
+      *__MK_GetPublic_MC_TRIGGER_REF(res)=
+         (GetFbVar(POSITIVEEDGE) ? 0x01 : 0)
+        |(GetFbVar(NEGATIVEEDGE) ? 0x02 : 0);
+  SetFbVar(TRIGGERINPUT,res); 
+  }}
+  Done := TRUE;
+END_IF;
+]]></ST>
+        </body>
+        <documentation><![CDATA[Create MC_TRIGGER_REF type, with given parameters.
+PositiveEdge and NegativeEdged default to TRUE.
+]]></documentation>
+      </pou>
+      <pou name="MC_CreateOutput" pouType="functionBlock">
+        <interface>
+          <outputVars>
+            <variable name="Output">
+              <type>
+                <derived name="MC_OUTPUT_REF"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="Done">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IF NOT Done THEN
+  {{
+      extern int __MK_Alloc_MC_OUTPUT_REF();
+      int res=__MK_Alloc_MC_OUTPUT_REF();
+      SetFbVar(OUTPUT,res);
+  }}
+  Done := TRUE;
+END_IF;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This allocates an output object. 
+One output per instanciated FB.
+]]></documentation>
+      </pou>
+      <pou name="MC_ToIntArray" pouType="functionBlock">
+        <interface>
+          <outputVars>
+            <variable name="IntArray">
+              <type>
+                <derived name="MC_INT_ARRAY"/>
+              </type>
+            </variable>
+          </outputVars>
+          <inputVars>
+            <variable name="X">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="Y">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="Z">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="U">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="V">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="W">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </inputVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IntArray[1]:=X;
+IntArray[2]:=Y;
+IntArray[3]:=Z;
+IntArray[4]:=U;
+IntArray[5]:=V;
+IntArray[6]:=W;
+]]></ST>
+        </body>
+        <documentation><![CDATA[This generate an array of 6 INT from inputs.
+]]></documentation>
+      </pou>
+      <pou name="MC_ReadOutputBits" pouType="functionBlock">
+        <interface>
+          <outputVars>
+            <variable name="Bits">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+          </outputVars>
+          <inputVars>
+            <variable name="Output">
+              <type>
+                <derived name="MC_OUTPUT_REF"/>
+              </type>
+            </variable>
+          </inputVars>
+        </interface>
+        <body>
+          <ST><![CDATA[{{
+extern uint32_t* __MK_GetPublic_MC_OUTPUT_REF(int);
+SetFbVar(BITS, *__MK_GetPublic_MC_OUTPUT_REF(GetFbVar(OUTPUT)));
+}}
+]]></ST>
+        </body>
+        <documentation><![CDATA[This returns bits contained in MC_OUTPUT_REF. 
+]]></documentation>
+      </pou>
+      <pou name="MC_ReadOutputBit" pouType="functionBlock">
+        <interface>
+          <outputVars>
+            <variable name="Bit">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </outputVars>
+          <inputVars>
+            <variable name="Output">
+              <type>
+                <derived name="MC_OUTPUT_REF"/>
+              </type>
+            </variable>
+            <variable name="OutputNumber">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </inputVars>
+        </interface>
+        <body>
+          <ST><![CDATA[{{
+extern uint32_t* __MK_GetPublic_MC_OUTPUT_REF(int);
+SetFbVar(BIT, (*__MK_GetPublic_MC_OUTPUT_REF(GetFbVar(OUTPUT)) >> 
+GetFbVar(OUTPUTNUMBER)) & 1);
+}}
+]]></ST>
+        </body>
+        <documentation><![CDATA[This returns bits contained in MC_OUTPUT_REF. 
+]]></documentation>
+      </pou>
+      <pou pouType="functionBlock" name="MC_TP_REF_FROM_CSV">
+        <interface>
+          <inputVars>
+            <variable name="FileName">
+              <type>
+                <string/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TimeProfile">
+              <type>
+                <derived name="MC_TP_REF"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="py1">
+              <type>
+                <derived name="python_eval"/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IF NOT Active THEN
+  {{
+    extern int __MK_Alloc_MC_TP_REF();
+    int res=__MK_Alloc_MC_TP_REF();
+    SetFbVar(TIMEPROFILE,res);
+  }}
+  Active := TRUE;
+END_IF;
+py1(TRIG := TRUE, CODE := CONCAT('MK_Load_MC_TP_REF_CSV(', INT_TO_STRING(TimeProfile),',"', FileName, '")'));
+IF AND(py1.ACK, EQ(py1.RESULT, 'True')) THEN
+  {{
+    extern uint8_t __MK_CheckPublic_MC_TP_REF(int);
+    if (__MK_CheckPublic_MC_TP_REF(GetFbVar(TIMEPROFILE))){
+        SetFbVar(VALID,TRUE);
+    }
+  }}
+END_IF;
+]]></ST>
+        </body>
+        <documentation><![CDATA[Load a CSV file, and present it as variable of type MC_TP_REF.
+]]></documentation>
+      </pou>
+      <pou pouType="functionBlock" name="MC_TV_REF_FROM_CSV">
+        <interface>
+          <inputVars>
+            <variable name="FileName">
+              <type>
+                <string/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TimeProfile">
+              <type>
+                <derived name="MC_TV_REF"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="py1">
+              <type>
+                <derived name="python_eval"/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IF NOT Active THEN
+  {{
+    extern int __MK_Alloc_MC_TV_REF();
+    int res=__MK_Alloc_MC_TV_REF();
+    SetFbVar(TIMEPROFILE,res);
+  }}
+  Active := TRUE;
+END_IF;
+py1(TRIG := TRUE, CODE := CONCAT('MK_Load_MC_TV_REF_CSV(', INT_TO_STRING(TimeProfile),',"', FileName, '")'));
+IF AND(py1.ACK, EQ(py1.RESULT, 'True')) THEN
+  {{
+    extern uint8_t __MK_CheckPublic_MC_TV_REF(int);
+    if (__MK_CheckPublic_MC_TV_REF(GetFbVar(TIMEPROFILE))){
+        SetFbVar(VALID,TRUE);
+    }
+  }}
+END_IF;
+]]></ST>
+        </body>
+        <documentation><![CDATA[Load a CSV file, and present it as variable of type MC_TV_REF.
+]]></documentation>
+      </pou>
+      <pou pouType="functionBlock" name="MC_TA_REF_FROM_CSV">
+        <interface>
+          <inputVars>
+            <variable name="FileName">
+              <type>
+                <string/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TimeProfile">
+              <type>
+                <derived name="MC_TA_REF"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="py1">
+              <type>
+                <derived name="python_eval"/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IF NOT Active THEN
+  {{
+    extern int __MK_Alloc_MC_TA_REF();
+    int res=__MK_Alloc_MC_TA_REF();
+    SetFbVar(TIMEPROFILE,res);
+  }}
+  Active := TRUE;
+END_IF;
+py1(TRIG := TRUE, CODE := CONCAT('MK_Load_MC_TA_REF_CSV(', INT_TO_STRING(TimeProfile),',"', FileName, '")'));
+IF AND(py1.ACK, EQ(py1.RESULT, 'True')) THEN
+  {{
+    extern uint8_t __MK_CheckPublic_MC_TA_REF(int);
+    if (__MK_CheckPublic_MC_TA_REF(GetFbVar(TIMEPROFILE))){
+        SetFbVar(VALID,TRUE);
+    }
+  }}
+END_IF;
+]]></ST>
+        </body>
+        <documentation><![CDATA[Load a CSV file, and present it as variable of type MC_TA_REF.
+]]></documentation>
+      </pou>
+      <pou pouType="functionBlock" name="MC_CAMSWITCH_REF_FROM_CSV">
+        <interface>
+          <inputVars>
+            <variable name="FileName">
+              <type>
+                <string/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CamSwitchList">
+              <type>
+                <derived name="MC_CAMSWITCH_REF"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="py1">
+              <type>
+                <derived name="python_eval"/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IF NOT Active THEN
+  {{
+    extern int __MK_Alloc_MC_CAMSWITCH_REF();
+    int res=__MK_Alloc_MC_CAMSWITCH_REF();
+    SetFbVar(CAMSWITCHLIST,res);
+  }}
+  Active := TRUE;
+END_IF;
+py1(TRIG := TRUE, CODE := CONCAT('MK_Load_MC_CAMSWITCH_REF_CSV(', INT_TO_STRING(CamSwitchList),',"', FileName, '")'));
+IF AND(py1.ACK, EQ(py1.RESULT, 'True')) THEN
+  {{
+    extern uint8_t __MK_CheckPublic_MC_CAMSWITCH_REF(int);
+    if (__MK_CheckPublic_MC_CAMSWITCH_REF(GetFbVar(CAMSWITCHLIST))){
+        SetFbVar(VALID,TRUE);
+    }
+  }}
+END_IF;
+]]></ST>
+        </body>
+        <documentation><![CDATA[Load a CSV file, and present it as variable of type MC_CAMSWITCH_REF.
+]]></documentation>
+      </pou>
+      <pou pouType="functionBlock" name="MC_CAM_REF_FROM_CSV">
+        <interface>
+          <inputVars>
+            <variable name="FileName">
+              <type>
+                <string/>
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="Active">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Valid">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="CamTable">
+              <type>
+                <derived name="MC_CAM_REF"/>
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="py1">
+              <type>
+                <derived name="python_eval"/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST><![CDATA[IF NOT Active THEN
+  {{
+    extern int __MK_Alloc_MC_CAM_REF();
+    int res=__MK_Alloc_MC_CAM_REF();
+    SetFbVar(CAMTABLE,res);
+  }}
+  Active := TRUE;
+END_IF;
+py1(TRIG := TRUE, CODE := CONCAT('MK_Load_MC_CAM_REF_CSV(', INT_TO_STRING(CamTable),',"', FileName, '")'));
+IF AND(py1.ACK, EQ(py1.RESULT, 'True')) THEN
+  {{
+    extern uint8_t __MK_CheckPublic_MC_CAM_REF(int);
+    if (__MK_CheckPublic_MC_CAM_REF(GetFbVar(CAMTABLE))){
+        SetFbVar(VALID,TRUE);
+    }
+  }}
+END_IF;
+]]></ST>
+        </body>
+        <documentation><![CDATA[Load a CSV file, and present it as variable of type MC_CAM_REF.
+]]></documentation>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations/>
+  </instances>
+</project>
